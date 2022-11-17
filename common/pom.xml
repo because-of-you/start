@@ -3,16 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>cn.citrus</groupId>
         <artifactId>management</artifactId>
+        <groupId>cn.citrus</groupId>
         <version>${revision}</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common</artifactId>
-    <version>${revision}</version>
-    <name>common</name>
-    <description>common</description>
-    <modelVersion>4.0.0</modelVersion>
 
 
 </project>
