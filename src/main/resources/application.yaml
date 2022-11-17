@@ -1,8 +1,0 @@
-logging:
-  level:
-    root: info
-    org:
-      springframework:
-        boot:
-          autoconfigure:
-            logging: info
