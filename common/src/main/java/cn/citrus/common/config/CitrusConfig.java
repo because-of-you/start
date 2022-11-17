@@ -15,4 +15,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CitrusConfig {
     private static String version = "0.0.1";
+
+    public void test() {
+        record Person(String name, String address) {
+        }
+        Person person = new Person("1", "3");
+        String address = person.address();
+    }
 }
