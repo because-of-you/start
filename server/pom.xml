@@ -37,6 +37,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>cn.citrus</groupId>
+            <artifactId>common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
         <!-- 健康检查 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
