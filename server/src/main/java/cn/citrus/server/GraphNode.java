@@ -2,6 +2,7 @@ package cn.citrus.server;
 
 import lombok.*;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,6 +39,10 @@ public class GraphNode<T> {
     public GraphNode(T data, Function<T, ?> key) {
         this.key = key;
         this.data = data;
+        this.source = new LinkedList<>();
+        this.target = new LinkedList<>();
+        this.relationships = new ConcurrentHashMap<>();
+        this.distance = new HashMap<>();
     }
 
     public Object getKey() {
