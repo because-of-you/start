@@ -27,10 +27,11 @@ public class GraphTest {
         figure.addRelationShip("2", "3");
         figure.addRelationShip("3", "4");
         figure.addRelationShip("1", "5");
-        figure.addRelationShip("4", "6");
+        figure.addRelationShip("4", "5");
         figure.addRelationShip("5", "6");
         figure.addRelationShip("6", "7");
-        figure.floyd();
+//        figure.floyd();
+        List<Object> reachableNodes = figure.reachableNodes("3");
         System.out.println("-------");
     }
 }

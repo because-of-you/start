@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,4 +97,30 @@ public class GraphFigure<T> {
         }
     }
 
+    List<Object> reachableNodes(Object searchNodeKey) {
+        if (ObjectUtil.isEmpty(searchNodeKey) || !this.nodesByKey.containsKey(searchNodeKey)) {
+            log.warn("无效或不存在的节点key: {}", searchNodeKey);
+            return new ArrayList<>();
+        }
+        GraphNode<T> graphNode = this.nodesByKey.get(searchNodeKey);
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        map.put(searchNodeKey, Boolean.TRUE);
+        bfsNextNodes(graphNode, map);
+        return map.keySet().stream().toList();
+    }
+
+    private void bfsNextNodes(GraphNode<T> graphNode, Map<Object, Boolean> map) {
+        if (ObjectUtil.isEmpty(graphNode.getTarget())) {
+            return;
+        }
+        for (GraphNode<T> target : graphNode.getTarget()) {
+            if (map.containsKey(target.getKey())) {
+                continue;
+            }
+            map.put(target.getKey(), Boolean.TRUE);
+
+            // 搜索
+            bfsNextNodes(target, map);
+        }
+    }
 }
