@@ -17,7 +17,20 @@ public class GraphTest {
         list.add(new GraphNode<>(Person.builder().id("1").build(), Person::getId));
         list.add(new GraphNode<>(Person.builder().id("2").build(), Person::getId));
         list.add(new GraphNode<>(Person.builder().id("3").build(), Person::getId));
+        list.add(new GraphNode<>(Person.builder().id("4").build(), Person::getId));
+        list.add(new GraphNode<>(Person.builder().id("5").build(), Person::getId));
+        list.add(new GraphNode<>(Person.builder().id("6").build(), Person::getId));
+        list.add(new GraphNode<>(Person.builder().id("7").build(), Person::getId));
         GraphFigure<Person> figure = new GraphFigure<>();
         figure.init(list);
+        figure.addRelationShip("1", "2");
+        figure.addRelationShip("2", "3");
+        figure.addRelationShip("3", "4");
+        figure.addRelationShip("1", "5");
+        figure.addRelationShip("4", "6");
+        figure.addRelationShip("5", "6");
+        figure.addRelationShip("6", "7");
+        figure.floyd();
+        System.out.println("-------");
     }
 }

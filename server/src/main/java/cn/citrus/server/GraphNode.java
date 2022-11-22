@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -16,25 +17,26 @@ import java.util.function.Function;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = {"key", "target", "source"})
 public class GraphNode<T> {
     private T data;
     private Function<T, ?> key;
     /**
      * 入边
      */
-    private LinkedList<GraphNode<T>> source;
+    private List<GraphNode<T>> source;
     /**
      * 出边
      */
-    private LinkedList<GraphNode<T>> target;
+    private List<GraphNode<T>> target;
     /**
      * 保存节点关系
      */
     private Map<String, GraphNode<T>> relationships;
     /**
-     * 记录可达和最小距离
+     * 记录可达和最小距离 不存在无限大
      */
-    private Map<String, String> distance;
+    private Map<Object, Integer> distance;
 
     public GraphNode(T data, Function<T, ?> key) {
         this.key = key;
