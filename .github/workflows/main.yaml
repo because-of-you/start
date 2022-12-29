@@ -1,4 +1,24 @@
+name: person site docker compose deploy
 on:
   push:
     branches:
-    - main
+      # 特定分支触发构建流程
+      - main
+    paths-ignore:
+      # 不触发该文件构建
+      - README.md
+
+jobs:
+  # 定义第一个job
+  compile-job:
+    # 第一个job的name
+    name: compile project
+    # 第一个job运行容器的基础环境
+    runs-on: ubuntu-latest
+    # job步骤
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
