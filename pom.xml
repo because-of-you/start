@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <!-- 后续有需要升级版本 -->
-        <version>3.0.0-RC2</version>
+        <version>3.0.1</version>
         <relativePath/>
     </parent>
 
@@ -29,7 +29,7 @@
         <!-- java版本 -->
         <java.version>17</java.version>
         <!-- spring boot 对应的版本 todo 后续升级 3.0 正式版 -->
-        <spring.boot.version>3.0.0-RC2</spring.boot.version>
+        <spring.boot.version>3.0.0</spring.boot.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

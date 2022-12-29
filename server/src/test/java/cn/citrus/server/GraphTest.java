@@ -1,10 +1,11 @@
 package cn.citrus.server;
 
+import cn.hutool.core.lang.Editor;
+import cn.hutool.core.map.MapUtil;
+import cn.hutool.core.util.ObjectUtil;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * {@code @author:} wfy
@@ -30,7 +31,19 @@ public class GraphTest {
         figure.addRelationShip("4", "6");
         figure.addRelationShip("5", "6");
         figure.addRelationShip("6", "7");
+        Map<Object, Object> filter = MapUtil.filter(MapUtil.newHashMap(), item -> ObjectUtil.isNotEmpty(item.getValue()));
         figure.floyd();
+        String format = String.format("SELECT" +
+                "  COLUMN_NAME   AS column_name" +
+                ", TABLE_NAME    AS table_name" +
+                ", TABLE_SCHEMA  AS table_schema" +
+                ", TABLE_CATALOG AS table_catalog" +
+                "  FROM information_schema.key_column_usage" +
+                "  WHERE TABLE_SCHEMA = ''" +
+                "    AND TABLE_NAME = ''" +
+                "    AND CONSTRAINT_NAME = 'PRIMARY'" +
+                "  ORDER BY ORDINAL_POSITION");
+        System.out.println(format);
         System.out.println("-------");
     }
 }
